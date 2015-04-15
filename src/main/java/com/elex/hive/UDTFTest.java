@@ -26,6 +26,10 @@ public class UDTFTest extends GenericUDTF{
 		fieldOIs.add(PrimitiveObjectInspectorFactory.javaStringObjectInspector);
 		fields.add("value");
 		fieldOIs.add(PrimitiveObjectInspectorFactory.javaStringObjectInspector);
+		fields.add("k1");
+		fieldOIs.add(PrimitiveObjectInspectorFactory.javaStringObjectInspector);
+		fields.add("value1");
+		fieldOIs.add(PrimitiveObjectInspectorFactory.javaStringObjectInspector);
 		return ObjectInspectorFactory.getStandardStructObjectInspector(fields, fieldOIs);
 	}
 
@@ -37,9 +41,6 @@ public class UDTFTest extends GenericUDTF{
 		forward(datas);	
 	}
 	
-	
-	
-
 	@Override
 	public void close() throws HiveException {
 		// TODO Auto-generated method stub

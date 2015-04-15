@@ -11,7 +11,7 @@ import java.util.Map;
 public class HiveTest {
 	public static String urlStr = "jdbc:hive2://namenode:10000/default";
 	public static String driverStr = "org.apache.hive.jdbc.HiveDriver";
-	public static String dataUser = "hive";
+	public static String dataUser = "hadoop";
 	public static String dataPass = "hiveuser";
 	
 	public static Connection getCon(){
@@ -44,6 +44,7 @@ public class HiveTest {
 		try {
 			Statement stmt = con.createStatement();
 			result = stmt.execute(createTableStr);
+//			System.out.println(stmt.execute(createTableStr));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -69,9 +70,9 @@ public class HiveTest {
 			ResultSet rs = stmt.executeQuery(sql);
 			while(rs.next()){
 				String id = rs.getString(1);
-				String name = rs.getString(2);
-				String tfidf = rs.getString(3);
-				System.out.println(id + "\t" + name + "\t" + tfidf);
+//				String name = rs.getString(2);
+//				String tfidf = rs.getString(3);
+				System.out.println(id);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -102,18 +103,19 @@ public class HiveTest {
 		maps.put("word", "String");
 		maps.put("user", "String");
 		maps.put("tfidf", "String");
-//		System.out.println(createTable(con, "tfidf", maps));
-		String sql  = "select * from tfidf";
+//		dropTable(con, "hivetest324");
+//		System.out.println(createTable(con, "hivetest324", maps));
+		String sql  = "select num from mytest";
 		selectTable(con, sql);
 		
-		sql = "load data local inpath 'E:/work/tfidf' overwrite into table tfidf";
+//		sql = "load data local inpath 'E:/work/tfidf' overwrite into table tfidf";
 //		System.out.println(loadData(con, sql));
 		
-		sql = "show tables";
-		ResultSet res = stmt.executeQuery(sql);
-		while(res.next()){
-			System.out.println(res.getString(1));
-		}
+//		sql = "show tables";
+//		ResultSet res = stmt.executeQuery(sql);
+//		while(res.next()){
+//			System.out.println(res.getString(1));
+//		}
 	}
 	
 	
